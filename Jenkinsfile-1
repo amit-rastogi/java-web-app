@@ -5,6 +5,9 @@ pipeline {
   }
   stages {
     stage('Scan') {
+      tools {
+         jdk "jdk-11"
+      }
       steps {
         withSonarQubeEnv(installationName: 'sonarqube') { 
           sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar'
